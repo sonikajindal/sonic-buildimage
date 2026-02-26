@@ -58,6 +58,8 @@ jobs:
             dbg_image: yes
             asan_image: yes
 
+        - name: alpinevs
+
         - name: barefoot
           variables:
             docker_syncd_rpc_image: yes
@@ -160,10 +162,6 @@ jobs:
             fi
             make $BUILD_OPTIONS target/sonic-vpp.img.gz
           elif [ $(GROUP_NAME) == alpinevs ]; then
-            if [ $(dbg_image) == yes ]; then
-              make $BUILD_OPTIONS INSTALL_DEBUG_TOOLS=y target/sonic-alpinevs.img.gz
-              mv target/sonic-alpinevs.img.gz target/sonic-alpinevs-dbg.img.gz
-            fi
             make $BUILD_OPTIONS target/sonic-alpinevs.img.gz
           else
             if [ $(dbg_image) == yes ]; then
